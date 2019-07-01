@@ -21,7 +21,7 @@ const req = new Request(url);
 if (searchTerm) {
 	fetch(req)
 		.then(response => (response.json()))
-		.then(json => { articles = json.articles.slice(0, 10) })
+		.then(json => { articles = json.articles.slice(0, 5) })
 		.then(createList);
 } else {
 	articles = [{}];
