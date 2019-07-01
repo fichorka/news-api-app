@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="main.css" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div class="main-container">
+		<header class="header">
+			<h1 class="main-heading">Pretraži vijesti</h1>
+			<form>
+				<div class="input-container">
+					<input type="text" class="search-input" id="search" name="search" placeholder="Pretraži" /><button
+						class="search-button"></button>
+				</div>
+			</form>
+		</header>
+		<div id="sliderApp" class="slider-container">
+			<button class="left-arrow" onclick="slide(-1)"></button>
+			<button class="right-arrow" onclick="slide(1)"></button>
+			<!-- slider comes here -->
+		</div>
+	</div>
+	<script src="main.js"></script>
+</body>
+
+</html>
