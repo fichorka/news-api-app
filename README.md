@@ -4,5 +4,5 @@ News search app which takes user input to search for news articles using [News A
 ## Technology
 **HTML**, **css** and **javascript**.
 
-###Contact
+######Contact
 filip.biterski@gmail.com

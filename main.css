@@ -34,7 +34,7 @@ body {
 	height: 46px;
 	box-sizing: border-box;
 	display: inline-block;
-	background: url("assets/search.png") no-repeat center;
+	background: url("assets/search.svg") no-repeat center;
 }
 
 .search-input {
