@@ -76,6 +76,7 @@ function createList() {
 			if (article.author) {
 				const textNode = document.createTextNode(`Autor: ${article.author}`);
 				const authorElement = document.createElement("SPAN");
+				authorElement.setAttribute("class", "article-author")
 				authorElement.appendChild(textNode);
 				textContainer.appendChild(authorElement);
 			}
