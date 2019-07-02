@@ -48,11 +48,11 @@ function slide(direction) {
 
 function createList() {
 	const $articleMap = articles.map(article => {
-		const $item = $("<div><\div>");
-		$item.attr("class", "article-container")
+		const $item = $("<div></div>");
+		$item.attr("class", "article-container");
 		domArticles.push($item);
 
-		const imageContainer = $("<div><\div>");
+		const imageContainer = $("<div></div>");
 		imageContainer.attr("class", "image-container");
 		const image = document.createElement("IMG");
 		const imagePath = article.urlToImage || "assets/placeholder.jpg"
@@ -64,18 +64,18 @@ function createList() {
 		$item.append(imageContainer);
 
 		if (article.title) {
-			const $textContainer = $("<div><\div>");
+			const $textContainer = $("<div></div>");
 			$textContainer.attr("class", "text-container");
 
 			const title = article.title;
-			const $heading = $("<h1><\h1>");
+			const $heading = $("<h1><-h1>");
 			$heading.attr("class", "article-heading");
 			$heading.text(title);
 			$textContainer.append($heading);
 
 			if (article.author) {
 				const label = `Autor: ${article.author}`;
-				const $authorElement = $("<span><\span>");
+				const $authorElement = $("<span></span>");
 				$authorElement.attr("class", "article-author")
 				$authorElement.append(label);
 				$textContainer.append($authorElement);
@@ -83,15 +83,15 @@ function createList() {
 
 			if (article.description) {
 				const $trimmedText = article.description.split(" ").splice(0, 50).join(" ");
-				const $description = $("<p><\p>");
+				const $description = $("<p></p>");
 				$description.text($trimmedText);
-				$description.attr("class", "article-description");
+				$description.attr("class", "article-description"); 
 				$textContainer.append($description);
 			}
 
 			if (article.url) {
 				const label = "Pročitaj članak";
-				const $linkElement = $("<a><\a>");
+				const $linkElement = $("<a></a>");
 				$linkElement.attr("href", article.url);
 				$linkElement.attr("class", "article-link");
 				$linkElement.append(label);
@@ -101,13 +101,14 @@ function createList() {
 
 			$item.append($textContainer);
 		}
+		
 		return $item;
 	})
 
-	const $displayContainer = $("<div><\div>");
+	const $displayContainer = $("<div></div>");
 	$displayContainer.attr("class", "display-container");
 	$articleMap.forEach(article => {
-		$displayContainer.prepend(article, $displayContainer.firstChild)
+		$displayContainer.prepend(article)
 	})
 
 	$("#sliderApp").append($displayContainer);
