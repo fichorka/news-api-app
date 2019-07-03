@@ -56,7 +56,6 @@ function createList() {
 		const image = document.createElement("IMG");
 		const imagePath = article.urlToImage || "assets/placeholder.jpg";
 		image.setAttribute("src", imagePath);
-		image.setAttribute("width", "30%");
 		image.setAttribute("class", "article-image");
 		image.setAttribute("onerror", "onerror='this.onerror=null';this.src='assets/placeholder.jpg';");
 		imageContainer.appendChild(image);
