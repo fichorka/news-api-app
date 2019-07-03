@@ -1,3 +1,8 @@
+/* setting style for html5 elements support */
+header, main, article {
+	display: block;
+}
+
 body {
 	font-family: 'Roboto', sans-serif;
 	color: rgb(74, 74, 74);
@@ -15,6 +20,7 @@ body {
 }
 
 .main-heading {
+	font-weight: 900;
 	font-size: 36px;
 	margin-top: 0;
 	margin-bottom: 50px;

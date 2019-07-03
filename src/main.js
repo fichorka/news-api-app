@@ -16,7 +16,7 @@ if (window.location.search.length) {
 $("#search").attr("value", decodeURIComponent(searchTerm.replace(/\+/g, ' ')));
 
 // api request:
-var url = `https://newsapi.org/v2/everything?q=${searchTerm}&apiKey=${apiKey}`;
+const url = `https://newsapi.org/v2/everything?q=${searchTerm}&apiKey=${apiKey}`;
 const req = new Request(url);
 if (searchTerm) {
 	fetch(req)
@@ -28,7 +28,7 @@ if (searchTerm) {
 	createList();
 }
 
-
+// slider buttons event handler
 function slide(direction) {
 	let selected = currentArticle + direction;
 	if (selected > domArticles.length - 1) {
@@ -44,29 +44,29 @@ function slide(direction) {
 	currentArticle = selected;
 }
 
-
-
 function createList() {
 	const $articleMap = articles.map(article => {
-		const $item = $("<div></div>");
-		$item.attr("class", "article-container");
-		domArticles.push($item);
+		const articleElement = $("<article></article>");
+		articleElement.attr("class", "article-container");
+		domArticles.push(articleElement);
 
-		const imageContainer = $("<div></div>");
-		imageContainer.attr("class", "image-container");
-		const image = document.createElement("IMG");
-		const imagePath = article.urlToImage || "assets/placeholder.jpg"
-		image.setAttribute("src", imagePath);
-		image.setAttribute("width", "30%");
-		image.setAttribute("class", "article-image");
-		image.setAttribute("onerror", "onerror='this.onerror=null';this.src='assets/placeholder.jpg';")
-		imageContainer.append(image);
-		$item.append(imageContainer);
+		// image
+		const $imageContainer = $("<div></div>");
+		$imageContainer.attr("class", "image-container");
+		const $image = $("<img>");
+		const imagePath = article.urlToImage || "assets/placeholder.jpg";
+		$image.attr({
+			src: imagePath,
+			class: "article-image",
+			oneerror: "onerror='this.onerror=null';this.src='assets/placeholder.jpg';"
+		});
+		$imageContainer.append($image);
+		articleElement.append($imageContainer);
 
+		// text
 		if (article.title) {
 			const $textContainer = $("<div></div>");
 			$textContainer.attr("class", "text-container");
-
 			const title = article.title;
 			const $heading = $("<h1><-h1>");
 			$heading.attr("class", "article-heading");
@@ -76,7 +76,7 @@ function createList() {
 			if (article.author) {
 				const label = `Autor: ${article.author}`;
 				const $authorElement = $("<span></span>");
-				$authorElement.attr("class", "article-author")
+				$authorElement.attr("class", "article-author");
 				$authorElement.append(label);
 				$textContainer.append($authorElement);
 			}
@@ -98,18 +98,17 @@ function createList() {
 				$textContainer.append($linkElement);
 			}
 
-
-			$item.append($textContainer);
+			articleElement.append($textContainer);
 		}
 		
-		return $item;
-	})
+		return articleElement;
+	});
 
 	const $displayContainer = $("<div></div>");
 	$displayContainer.attr("class", "display-container");
 	$articleMap.forEach(article => {
-		$displayContainer.prepend(article)
-	})
+		$displayContainer.prepend(article);
+	});
 
 	$("#sliderApp").append($displayContainer);
 }
