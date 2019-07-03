@@ -101,13 +101,13 @@ function createList() {
 			articleElement.appendChild(textContainer);
 		}
 		return articleElement;
-	})
+	});
 
 	const displayContainer = document.createElement("DIV");
 	displayContainer.setAttribute("class", "display-container");
 	articleMap.forEach(article => {
 		displayContainer.insertBefore(article, displayContainer.firstChild);
-	})
+	});
 
 	document.getElementById("sliderApp").appendChild(displayContainer);
 }
