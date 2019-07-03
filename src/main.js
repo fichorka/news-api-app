@@ -16,7 +16,7 @@ if (window.location.search.length) {
 document.getElementById("search").value = decodeURIComponent(searchTerm.replace(/\+/g, ' '));
 
 // api request:
-var url = `https://newsapi.org/v2/everything?q=${searchTerm}&apiKey=${apiKey}`;
+const url = `https://newsapi.org/v2/everything?q=${searchTerm}&apiKey=${apiKey}`;
 const req = new Request(url);
 if (searchTerm) {
 	fetch(req)
@@ -28,7 +28,7 @@ if (searchTerm) {
 	createList();
 }
 
-
+//slide buttons event handler
 function slide(direction) {
 	let selected = currentArticle + direction;
 	if (selected > domArticles.length - 1) {
@@ -44,29 +44,28 @@ function slide(direction) {
 	currentArticle = selected;
 }
 
-
-
 function createList() {
 	const articleMap = articles.map(article => {
-		const item = document.createElement("DIV");
-		item.setAttribute("class", "article-container")
-		domArticles.push(item);
+		const articleElement = document.createElement("ARTICLE");
+		articleElement.setAttribute("class", "article-container");
+		domArticles.push(articleElement);
 
+		//image
 		const imageContainer = document.createElement("DIV");
 		imageContainer.setAttribute("class", "image-container");
 		const image = document.createElement("IMG");
-		const imagePath = article.urlToImage || "assets/placeholder.jpg"
+		const imagePath = article.urlToImage || "assets/placeholder.jpg";
 		image.setAttribute("src", imagePath);
 		image.setAttribute("width", "30%");
 		image.setAttribute("class", "article-image");
-		image.setAttribute("onerror", "onerror='this.onerror=null';this.src='assets/placeholder.jpg';")
+		image.setAttribute("onerror", "onerror='this.onerror=null';this.src='assets/placeholder.jpg';");
 		imageContainer.appendChild(image);
-		item.appendChild(imageContainer);
+		articleElement.appendChild(imageContainer);
 
+		//text
 		if (article.title) {
 			const textContainer = document.createElement("DIV");
 			textContainer.setAttribute("class", "text-container");
-
 			const title = document.createTextNode(article.title);
 			const heading = document.createElement("H1");
 			heading.setAttribute("class", "article-heading");
@@ -76,7 +75,7 @@ function createList() {
 			if (article.author) {
 				const textNode = document.createTextNode(`Autor: ${article.author}`);
 				const authorElement = document.createElement("SPAN");
-				authorElement.setAttribute("class", "article-author")
+				authorElement.setAttribute("class", "article-author"),
 				authorElement.appendChild(textNode);
 				textContainer.appendChild(authorElement);
 			}
@@ -99,16 +98,15 @@ function createList() {
 				textContainer.appendChild(linkElement);
 			}
 
-
-			item.appendChild(textContainer);
+			articleElement.appendChild(textContainer);
 		}
-		return item;
+		return articleElement;
 	})
 
 	const displayContainer = document.createElement("DIV");
 	displayContainer.setAttribute("class", "display-container");
 	articleMap.forEach(article => {
-		displayContainer.insertBefore(article, displayContainer.firstChild)
+		displayContainer.insertBefore(article, displayContainer.firstChild);
 	})
 
 	document.getElementById("sliderApp").appendChild(displayContainer);
