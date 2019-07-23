@@ -41,7 +41,7 @@ function slide(direction) {
 	currentArticle = selected;
 }
 
-function createList(articles) {
+function createList(articles = []) {
 	articles = articles.length ? articles : [{default: "df"}]
 	// debugger;
 	const articleMap = articles.map(article => {
