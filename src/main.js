@@ -53,10 +53,10 @@ function createList(articles) {
 		const $imageContainer = $("<div></div>");
 		$imageContainer.attr("class", "image-container");
 		const $image = $("<img></img>");
-		const imagePath = article.urlToImage || "assets/placeholder.jpg";
+		const imagePath = article.urlToImage || "assets/Placeholder.jpg";
 		$image.attr("src", imagePath);
 		$image.attr("class", "article-image");
-		$image.attr("onerror", "onerror='this.onerror=null';this.src='assets/placeholder.jpg';");
+		$image.attr("onerror", "onerror='this.onerror=null';this.src='assets/Placeholder.jpg';");
 		$imageContainer.append($image);
 		$articleElement.append($imageContainer);
 
