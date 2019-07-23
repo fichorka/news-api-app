@@ -2,7 +2,6 @@ const apiKey = '42c3dd6dfe8f4866a23ad70d71cd3c66';
 let searchTerm = '';
 let domArticles = [];
 let currentArticle = 0;
-let articles = null;
 
 // checking for search query:
 if (window.location.search.length) {
@@ -20,10 +19,9 @@ const req = new Request(url);
 if (searchTerm) {
 	fetch(req)
 		.then(response => (response.json()))
-		.then(json => { articles = json.articles.slice(0, 5) })
-		.then(createList);
+		.then(json => (json.articles.slice(0, 5) ))
+		.then(articles => createList(articles));
 } else {
-	articles = [{}];
 	createList();
 }
 
@@ -43,7 +41,9 @@ function slide(direction) {
 	currentArticle = selected;
 }
 
-function createList() {
+function createList(articles) {
+	articles = articles.length ? articles : [{default: "df"}]
+	// debugger;
 	const articleMap = articles.map(article => {
 		const $articleElement = $("<article></article>");
 		$articleElement.attr("class", "article-container");
