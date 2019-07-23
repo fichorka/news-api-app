@@ -1,4 +1,6 @@
 import $ from "jquery";
+import "./main.scss";
+import placeholderImage from "./assets/Placeholder.jpg";
 
 const apiKey = '42c3dd6dfe8f4866a23ad70d71cd3c66';
 let searchTerm = '';
@@ -59,10 +61,10 @@ function createList(articles = []) {
 		const $imageContainer = $("<div></div>");
 		$imageContainer.attr("class", "image-container");
 		const $image = $("<img></img>");
-		const imagePath = article.urlToImage || "assets/Placeholder.jpg";
+		const imagePath = article.urlToImage || placeholderImage;
 		$image.attr("src", imagePath);
 		$image.attr("class", "article-image");
-		$image.attr("onerror", "onerror='this.onerror=null';this.src='assets/Placeholder.jpg';");
+		$image.attr("onerror", `onerror='this.onerror=null';this.src=${placeholderImage};`);
 		$imageContainer.append($image);
 		$articleElement.append($imageContainer);
 

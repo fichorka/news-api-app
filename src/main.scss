@@ -1,0 +1,170 @@
+//mixins:
+@mixin arrow($url) {
+	position: absolute;
+	width: 70px;
+	height: 460px;
+	background: url($url) no-repeat center;
+	background-size: 25px;
+}
+
+// variables:
+$text-color: rgb(74, 74, 74);
+$border-color: #4a4a4a;
+$article-bgcolor: rgb(242, 242, 242);
+$font-size-small: 14px;
+$font-size-medium: 16px;
+$font-size-heading2: 20px;
+$font-size-heading1: 36px;
+
+// setting style for html5 elements
+header, main, article {
+	display: block; 
+  }
+
+body {
+	font-family: 'Roboto', sans-serif;
+	color: $text-color;
+}
+
+.main-container {
+	width: 820px;
+	margin: 0 auto;
+	padding-top: 100px;
+}
+
+.header {
+	width: 680px;
+	margin: auto;
+}
+
+.main-heading {
+	font-weight: 900;
+	font-size: $font-size-heading1;
+	margin-top: 0;
+	margin-bottom: 50px;
+}
+
+.input-container {
+	position: relative;
+	border: 1px solid $border-color;
+	border-radius: 4px;
+	margin-bottom: 50px;
+}
+
+.search-button {
+	position: absolute;
+	right:0;
+	width:50px;
+	height: 46px;
+	box-sizing: border-box;
+	display: inline-block;
+	background: url("assets/search.svg") no-repeat center;
+}
+
+.search-input {
+	display: inline-block;
+	font-weight: 500;
+	width: 630px;
+	margin: 0;
+	box-sizing: border-box;
+	font-size: 16px;
+	padding: 14px 10px;
+	border: none;
+	background: none;
+}
+
+.slider-container {
+	position: relative;
+	width: 820px;
+	margin: 50px auto;
+	height: 460px;
+}
+
+.display-container {
+	width: 680px;
+	margin: 0 auto;
+	height: 460px;
+}
+
+.article-container {
+	overflow: hidden;
+	position: absolute;
+	width: 680px;
+	height: 460px;
+	margin: 0 auto;
+	background: $article-bgcolor;
+	border-radius: 4px;
+}
+
+.image-container {
+	overflow: hidden;
+	width: 320px;
+	display: inline-block;
+	height: 460px;
+	object-fit: cover;
+}
+
+.text-container {
+	width: 360px;
+	display: inline-block;
+	box-sizing: border-box;
+	padding: 25px;
+	vertical-align: top;
+	position: relative;
+	height: 100%;
+	word-break: break-all;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.article-heading {
+	font-size: $font-size-heading2;
+	margin: 0 0 10px 0;
+}
+
+.article-author {
+	font-size: $font-size-small;
+}
+
+.article-description {
+	font-size: $font-size-medium;
+	margin-top: 30px;
+	margin-bottom: 50px;
+	text-overflow: ellipsis;
+	max-height: 200px;
+	overflow: hidden;
+	word-break: break-all;
+}
+
+.article-image {
+	width: 100%;
+	height: 460px;
+	object-fit: cover;
+}
+
+.article-link {
+	position: absolute;
+	bottom: 25px;
+	color: $text-color;
+	padding-bottom: 2px;
+	border-bottom: 1px solid $border-color;
+	text-decoration: none;
+}
+
+.left-arrow {
+	@include arrow("assets/left-arrow.svg");
+}
+
+.right-arrow {
+	@include arrow("assets/right-arrow.svg");
+	right: 0;
+}
+
+// button reset
+button {
+	border: none;
+	overflow: visible;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+}

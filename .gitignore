@@ -1,4 +1,3 @@
 /node_modules
-/dist/*
-!/dist/*htm[l]
-!/dist/assets
+/dist
+

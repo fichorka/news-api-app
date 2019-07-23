@@ -1,11 +1,20 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	mode: "development",
 	entry: "./src/index.js",
+	devServer: {
+		contentBase: "./dist"
+	},
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: "index.html"
+		})
+	],
 	output: {
 		path: path.resolve(__dirname, "dist"),
-		filename: "main.js",
+		filename: "[name].bundle.js",
 	},
 	module: {
 		rules: [
@@ -18,7 +27,22 @@ module.exports = {
 						presets: ["@babel/preset-env"]
 					}
 				}
-			}
+			},
+			{
+				test: /\.scss$/,
+				use: [
+					"style-loader", // creates style nodes from JS strings
+					"css-loader", // translates CSS into CommonJS
+					"sass-loader" // compiles Sass to CSS, using Node Sass by default
+				]
+			},
+			{
+				test: /\.(png|svg|jpg|gif)$/,
+				use: {
+					loader: "file-loader?name=./assets/[hash].[ext]"
+				}
+			},
+
 		]
 	}
 }
