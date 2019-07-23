@@ -1,0 +1,20 @@
+{
+  "name": "news-api-app",
+  "version": "1.0.0",
+  "description": "News search app which takes user input to search for news articles using [News API](https://newsapi.org/).",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fichorka/news-api-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fichorka/news-api-app/issues"
+  },
+  "homepage": "https://github.com/fichorka/news-api-app#readme"
+}
