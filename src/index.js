@@ -1,3 +1,5 @@
+import $ from "jquery";
+
 const apiKey = '42c3dd6dfe8f4866a23ad70d71cd3c66';
 let searchTerm = '';
 let domArticles = [];
@@ -19,11 +21,15 @@ const req = new Request(url);
 if (searchTerm) {
 	fetch(req)
 		.then(response => (response.json()))
-		.then(json => (json.articles.slice(0, 5) ))
+		.then(json => (json.articles.slice(0, 5)))
 		.then(articles => createList(articles));
 } else {
 	createList();
 }
+
+//add event listeners
+$(".left-arrow").click(() => slide(-1));
+$(".right-arrow").click(() => slide(1));
 
 //slide buttons event handler
 function slide(direction) {
@@ -42,7 +48,7 @@ function slide(direction) {
 }
 
 function createList(articles = []) {
-	articles = articles.length ? articles : [{default: "df"}]
+	articles = articles.length ? articles : [{ default: "df" }]
 	// debugger;
 	const articleMap = articles.map(article => {
 		const $articleElement = $("<article></article>");
@@ -74,7 +80,7 @@ function createList(articles = []) {
 				const author = `Autor: ${article.author}`;
 				const $authorElement = $("<span></span>");
 				$authorElement.attr("class", "article-author"),
-				$authorElement.text(author);
+					$authorElement.text(author);
 				$textContainer.append($authorElement);
 			}
 
@@ -102,8 +108,8 @@ function createList(articles = []) {
 
 	const $displayContainer = $("<div></div>");
 	$displayContainer.attr("class", "display-container");
-	articleMap.forEach(article => {
-		$displayContainer.append(article);
+	articleMap.forEach($articleElement => {
+		$displayContainer.prepend($articleElement);
 	});
 
 	$("#sliderApp").append($displayContainer);
