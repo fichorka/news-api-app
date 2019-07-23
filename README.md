@@ -4,7 +4,7 @@ News search app which takes user input to search for news articles using [News A
 ## Technologies
 **Html**, **scss**, **jquery**, **babel** and **webpack**.
 
-##Usage:
+## Usage:
 1. `npm install`
 2. `npm start` to run dev server **or** `npm run watch` to write output files on change.
 
