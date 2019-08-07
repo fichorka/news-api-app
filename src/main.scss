@@ -120,6 +120,7 @@ body {
 .article-heading {
 	font-size: $font-size-heading2;
 	margin: 0 0 10px 0;
+	word-break: break-word;
 }
 
 .article-author {
@@ -133,7 +134,7 @@ body {
 	text-overflow: ellipsis;
 	max-height: 200px;
 	overflow: hidden;
-	word-break: break-all;
+	word-break: break-word;
 }
 
 .article-image {
